@@ -17,6 +17,7 @@
             overflow: hidden;
             flex-direction: column;
             text-align: center;
+            position: relative;
         }
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
         canvas {
@@ -65,15 +66,41 @@
             font-family: 'Press Start 2P', cursive, Arial, sans-serif;
             text-decoration: none;
         }
+        .heart {
+            color: red;
+            font-size: 1.2em;
+        }
         #navigation-bar {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #333;
-            width: 100%;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            margin: 10px;
+            z-index: 1000;
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            box-sizing: border-box;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .nav-toggle-button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Press Start 2P', cursive, Arial, sans-serif;
+        }
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 5px;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            width: fit-content;
+        }
+        .nav-links.visible {
+            display: flex;
         }
     </style>
 </head>
@@ -92,8 +119,12 @@
     </div>
 
     <div id="navigation-bar">
-        <a href="snake.html" class="action-button">Serpiente</a>
-        <a href="rompe-ladrillos.html" class="action-button">Rompe-Ladrillos</a>
+        <button class="nav-toggle-button">Menú</button>
+        <div class="nav-links">
+            <a href="snake.html" class="action-button">Serpiente</a>
+            <a href="rompe-ladrillos.html" class="action-button">Rompe-Ladrillos</a>
+            <a href="naveespacial.html" class="action-button">Nave Espacial</a>
+        </div>
     </div>
 
     <script>
@@ -104,6 +135,8 @@
         const gameOverScreen = document.getElementById('game-over-screen');
         const finalTimeDisplay = document.getElementById('final-time');
         const restartButton = document.getElementById('restart-button');
+        const navToggleButton = document.querySelector('.nav-toggle-button');
+        const navLinks = document.querySelector('.nav-links');
 
         function setCanvasSize() {
             canvas.width = Math.min(window.innerWidth * 0.9, 400);
@@ -279,6 +312,10 @@
 
         restartButton.addEventListener('click', resetGame);
         
+        navToggleButton.addEventListener('click', () => {
+            navLinks.classList.toggle('visible');
+        });
+
         resetGame();
 
     </script>
