@@ -64,6 +64,7 @@
             margin-top: 10px;
             font-family: 'Press Start 2P', cursive, Arial, sans-serif;
             text-decoration: none;
+            white-space: nowrap; /* Evita que el texto se divida en varias líneas */
         }
         #controls {
             display: flex;
@@ -90,6 +91,8 @@
             justify-content: center;
             gap: 15px;
             box-sizing: border-box;
+            overflow-x: auto; /* Permite el desplazamiento horizontal */
+            -webkit-overflow-scrolling: touch; /* Mejora la fluidez del desplazamiento en iOS */
         }
     </style>
 </head>
@@ -117,6 +120,7 @@
     <div id="navigation-bar">
         <a href="index.html" class="action-button">Esquivar</a>
         <a href="rompe-ladrillos.html" class="action-button">Rompe-Ladrillos</a>
+        <a href="naveespacial.html" class="action-button">Nave Espacial</a>
     </div>
 
     <script>
